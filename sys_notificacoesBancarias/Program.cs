@@ -6,6 +6,8 @@
         static void Main(string[] args)
         {
             string titular;
+            int opcaoMenu;
+
             static void EnviarEmail(string mensagem)
             {
                 Console.WriteLine($"Enviando email: {mensagem}");
@@ -26,7 +28,19 @@
 
             #endregion
 
-            
+            #region Menu inicial
+            Console.WriteLine($"Olá, {conta.Titular}\n" +
+                $"\n" +
+                $"Selecione uma opção abaixo para prosseguir:\n" +
+                $"1.Ver saldo\n" +
+                $"2.Solicitar limite\n" +
+                $"3.Sacar\n" +
+                $"4.Depositar\n" +
+                $"5.Verificar todas as informações\n" +
+                $"6.Sair da aplicação");
+            opcaoMenu = Convert.ToInt32(Console.ReadLine());
+
+            #endregion
 
 
         }
