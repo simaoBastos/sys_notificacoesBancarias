@@ -30,24 +30,22 @@
             Console.Write("Titular: ");
             titular = Console.ReadLine();
 
-            ContaBancaria conta = new ContaBancaria(titular, 1000, 0);
+            ContaBancaria conta = new ContaBancaria(titular, 10000, 50000);
             Console.Clear();
 
             #endregion
 
-            while (opcaoMenu != 4)
-            {
-                #region Menu inicial
-                Console.WriteLine($"Olá, {conta.Titular}!\n" +
-                    $"Saldo: {conta.Saldo:c2} || Limite: {conta.LimiteExtra:c2}\n" +
-                    $"\n" +
-                    $"Selecione uma opção abaixo para prosseguir:\n" +
-                    $"1.Sacar\n" +
-                    $"2.Depositar\n" +
-                    $"3.Solicitar limite\n" +
-                    $"4.Sair da aplicação");
-                Console.Write("Opção: ");
-                opcaoMenu = Convert.ToInt32(Console.ReadLine());
+            #region Menu inicial
+            Console.WriteLine($"Olá, {conta.Titular}\n" +
+                $"\n" +
+                $"Selecione uma opção abaixo para prosseguir:\n" +
+                $"1.Ver saldo\n" +
+                $"2.Solicitar limite\n" +
+                $"3.Sacar\n" +
+                $"4.Depositar\n" +
+                $"5.Verificar todas as informações\n" +
+                $"6.Sair da aplicação");
+            opcaoMenu = Convert.ToInt32(Console.ReadLine());
 
                 #endregion
 
