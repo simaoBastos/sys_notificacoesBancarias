@@ -2,11 +2,18 @@
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             string titular;
-            int opcaoMenu;
+            int opcaoMenu = 0;
+
+            static void VoltarParaMenu()
+            {
+                Console.Write("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                Console.Clear();
+            }
 
             static void EnviarEmail(string mensagem)
             {
@@ -23,26 +30,60 @@
             Console.Write("Titular: ");
             titular = Console.ReadLine();
 
-            ContaBancaria conta = new ContaBancaria(titular, 10000, 50000);
+            ContaBancaria conta = new ContaBancaria(titular, 1000, 0);
             Console.Clear();
 
             #endregion
 
-            #region Menu inicial
-            Console.WriteLine($"Olá, {conta.Titular}\n" +
-                $"\n" +
-                $"Selecione uma opção abaixo para prosseguir:\n" +
-                $"1.Ver saldo\n" +
-                $"2.Solicitar limite\n" +
-                $"3.Sacar\n" +
-                $"4.Depositar\n" +
-                $"5.Verificar todas as informações\n" +
-                $"6.Sair da aplicação");
-            opcaoMenu = Convert.ToInt32(Console.ReadLine());
+            while (opcaoMenu != 4)
+            {
+                #region Menu inicial
+                Console.WriteLine($"Olá, {conta.Titular}!\n" +
+                    $"Saldo: {conta.Saldo:c2} || Limite: {conta.LimiteExtra:c2}\n" +
+                    $"\n" +
+                    $"Selecione uma opção abaixo para prosseguir:\n" +
+                    $"1.Sacar\n" +
+                    $"2.Depositar\n" +
+                    $"3.Solicitar limite\n" +
+                    $"4.Sair da aplicação");
+                Console.Write("Opção: ");
+                opcaoMenu = Convert.ToInt32(Console.ReadLine());
 
-            #endregion
+                #endregion
 
+                switch (opcaoMenu)
+                {
+                    case 1: //Sacar
+                        Console.Write($"Insira o valor a ser sacado:");
+                        conta.Sacar(Convert.ToDouble(Console.ReadLine()), EnviarEmail);
+                        Console.WriteLine();
+                        VoltarParaMenu();
+                        break;
 
+                    case 2: //Depositar
+                        Console.Write("Insira o valor a ser depositado: ");
+                        conta.Depositar(Convert.ToDouble(Console.ReadLine()));
+                        Console.WriteLine();
+                        VoltarParaMenu();
+                        break;
+
+                    case 3: //Solicitar limite
+                        Console.Write("Insira o limite desejado: ");
+                        conta.LimiteExtra = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine();
+                        VoltarParaMenu();
+                        break;
+
+                    case 4: //Sair da aplicacao
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Opçao nao disponivel, tente novamente...");
+                        break;
+                }
+            }
+            Console.WriteLine("Voce saiu da aplicacao.");
         }
     }
 }

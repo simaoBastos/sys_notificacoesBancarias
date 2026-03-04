@@ -22,21 +22,27 @@ namespace sys_notificacoesBancarias
         public double Saldo
         {
             get { return _saldo; }
-            private set {_saldo = value; }
+            private set { _saldo = value; }
         }
-        public double LimiteExtra{
-            get{ return _limiteExtra; }
+        public double LimiteExtra
+        {
+            get { return _limiteExtra; }
 
             set
             {
-               if (value < 0)
+                if (value < 0)
                 {
                     throw new ArgumentException($"O limite não pode ser negativo.");
-                    
+
                 }
-                _limiteExtra = value;
+                else
+                {
+                    Console.WriteLine($"O limite de {value} foi permitido.");
+                    _limiteExtra = value;
+                }
+
             }
-            
+
         }
         #endregion
 
@@ -68,7 +74,7 @@ namespace sys_notificacoesBancarias
             {
                 throw new InvalidOperationException($"Saldo insuficiente para realizar o saque de R${valor}.");
             }
-            else if (valor>=1000 || valor > Saldo)
+            else if (valor >= 1000 || valor > Saldo)
             {
                 alerta($"ALERTA: Saque de alto valor ou uso de limite detectado na conta de {Titular}.");
             }
