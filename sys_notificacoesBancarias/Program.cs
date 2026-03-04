@@ -1,11 +1,23 @@
 ﻿namespace sys_notificacoesBancarias
 {
-    internal class Program
+    class Program
     {
-        public delegate void NotificacaoAlerta(string mensagem);
+        
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string titular;
+            static void EnviarEmail(string mensagem)
+            {
+                Console.WriteLine($"Enviando email: {mensagem}");
+            }
+            static void EnviarSMS(string mensagem)
+            {
+                Console.WriteLine($"Enviando SMS: {mensagem}");
+            }
+
+            
+
+            ContaBancaria conta = new ContaBancaria("Jonas", 10000, 50000);
         }
     }
 }
