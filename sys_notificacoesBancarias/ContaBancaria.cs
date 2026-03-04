@@ -9,12 +9,21 @@ namespace sys_notificacoesBancarias
     delegate void NotificacaoAlerta(string mensagem);
     class ContaBancaria
     {
+        #region Atributos
         private string _titular;
         private double _saldo;
         private double _limiteExtra;
 
-        public string Titular{get; set;}
-        public double Saldo { get; private set; }
+        public string Titular
+        {
+            get { return _titular; }
+            set { _titular = value; }
+        }
+        public double Saldo
+        {
+            get { return _saldo; }
+            private set {_saldo = value; }
+        }
         public double LimiteExtra{
             get{ return _limiteExtra; }
 
@@ -29,7 +38,9 @@ namespace sys_notificacoesBancarias
             }
             
         }
+        #endregion
 
+        #region Construtor
         public ContaBancaria(string titular, double saldo, double limiteExtra)
         {
             this.Titular = titular;
@@ -39,8 +50,9 @@ namespace sys_notificacoesBancarias
             this.LimiteExtra = limiteExtra;
 
         }
+        #endregion
 
-
+        #region Métodos
         public void Depositar(double valor)
         {
             if (valor <= 0)
@@ -50,7 +62,6 @@ namespace sys_notificacoesBancarias
             Console.WriteLine($"Depósito de R${valor} realizado com sucesso.");
             Saldo += valor;
         }
-
         public void Sacar(double valor, NotificacaoAlerta alerta)
         {
             if (valor > Saldo + LimiteExtra)
@@ -66,5 +77,6 @@ namespace sys_notificacoesBancarias
             Saldo -= valor;
 
         }
+        #endregion
     }
 }

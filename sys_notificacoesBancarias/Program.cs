@@ -15,9 +15,8 @@
                 Console.WriteLine($"Enviando SMS: {mensagem}");
             }
 
-            
 
-            ContaBancaria conta = new ContaBancaria("Jonas", 10000, 50000);
+
         }
     }
 }
