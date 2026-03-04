@@ -15,6 +15,18 @@
                 Console.WriteLine($"Enviando SMS: {mensagem}");
             }
 
+            #region Criando conta bancária
+            Console.WriteLine("Insira as informações da conta bancária:");
+
+            Console.Write("Titular: ");
+            titular = Console.ReadLine();
+
+            ContaBancaria conta = new ContaBancaria(titular, 10000, 50000);
+            Console.Clear();
+
+            #endregion
+
+            
 
 
         }
